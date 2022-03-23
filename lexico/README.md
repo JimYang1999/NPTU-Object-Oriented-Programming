@@ -62,6 +62,7 @@ int main()
     {
         cout << str[i] << endl;
     }
+    return 0;
 }
 ```
   
