@@ -8,7 +8,7 @@ int main()
     cin >> n;
 
     char** str = new char* [n];
-    cin.ignore();
+    cin.get();
     for (int i = 0; i < n; i++)
     {
         cout << "Input " << i + 1 << ": ";
