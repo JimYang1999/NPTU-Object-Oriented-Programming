@@ -14,6 +14,8 @@ Capitalizing...
 Output: In 2013, The Government Of The US Was Shut Down For More Than TWO WEEKS.
 ```
 主程式
+
+- 陣列版本
 ```
 #include <iostream>
 #include <string>
@@ -24,7 +26,7 @@ int main()
 	cout << "Please input a string:" << endl;
 	getline(cin, str);
 	cout << "Capitalizing..." << endl;
-	/* 陣列版本
+
 	str[0]=toupper(str[0]);
 	for (int i = 0; i < str.size(); i++)
 	{
@@ -37,17 +39,47 @@ int main()
 			cout << str << endl;
 		}
 	}
-	*/
-	/* toupper函數版本
+	
+	
+	cout << str;
+	return 0;
+}
+```
+- 函式版本
+```
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	string str;
+	cout << "Please input a string:" << endl;
+	getline(cin, str);
+	cout << "Capitalizing..." << endl;
+
+	str[0]=toupper(str[0]);
 	int pos = 0;
-	while (pos!=-1)
+	while (pos != -1)
 	{
-		pos = str.find(' ',pos);
-		str.replace(pos+1,1,1, toupper(str[pos+1]));  //string& replace (size_t pos,  size_t len,  size_t n, char c);
-		if (pos!=-1)pos += 1;
+		pos = str.find(' ', pos);
+		str.replace(pos + 1, 1, 1, toupper(str[pos + 1]));  //string& replace (size_t pos,  size_t len,  size_t n, char c);
+		if (pos != -1)pos += 1;
 	}
-	*/
-	/*ASCII版本*/
+	cout << str;
+	return 0;
+}
+```
+- ASCII版本
+```
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	string str;
+	cout << "Please input a string:" << endl;
+	getline(cin, str);
+	cout << "Capitalizing..." << endl;
 	if (int(str[0]) >= 97)str[0] = char(int(str[0] - 32));
 	for (int i = 0; i < str.size(); i++)
 	{
@@ -56,4 +88,5 @@ int main()
 	cout << str;
 	return 0;
 }
+
 ```
