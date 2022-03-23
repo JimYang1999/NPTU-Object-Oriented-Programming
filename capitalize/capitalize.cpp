@@ -7,7 +7,7 @@ int main()
 	cout << "Please input a string:" << endl;
 	getline(cin, str);
 	cout << "Capitalizing..." << endl;
-	// Array version
+	/* Array version
 	str[0]=toupper(str[0]);
 	for (int i = 0; i < str.size(); i++)
 	{
@@ -20,7 +20,7 @@ int main()
 			cout << str << endl;
 		}
 	}
-	
+	*/
 	/* function version
 	int pos = 0;
 	while (pos!=-1)
@@ -30,13 +30,13 @@ int main()
 		if (pos!=-1)pos += 1;
 	}
 	*/
-	/*ASCII version
+	/*ASCII version*/
 	if (int(str[0]) >= 97)str[0] = char(int(str[0] - 32));
 	for (int i = 0; i < str.size(); i++)
 	{
 		(int(str[i]) == 32 and int(str[i + 1]) >= 97 and int(str[i + 1]) <= 122) ? str[i + 1] = char(int(str[i + 1]) - 32) : 0;
 	}
-	*/
+	
 	cout << str;
 	return 0;
 }
