@@ -36,6 +36,7 @@ int main()
 	{
 		(int(str[i]) == 32 and int(str[i + 1]) >= 97 and int(str[i + 1]) <= 122) ? str[i + 1] = char(int(str[i + 1]) - 32) : 0;
 	}
+	*/
 	cout << str;
 	return 0;
 }
