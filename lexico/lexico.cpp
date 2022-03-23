@@ -1,44 +1,21 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 using namespace std;
 int main()
 {
-    int n;
-    cout << "How many strings do you want to input? ";
-    cin >> n;
+	string str;
+	cout << "Please input a string:" << endl;
+	getline(cin, str);
+	cout << "Capitalizing..." << endl;
 
-    char** str = new char* [n];
-    cin.ignore();
-    for (int i = 0; i < n; i++)
-    {
-        cout << "Input " << i + 1 << ": ";
-        str[i] = new char[21];
-        cin.getline(str[i], 21);
-
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        char* tmp = str[i];
-        while (*tmp) {
-            *tmp = tolower(*tmp);
-            tmp++;
-        }
-    }
-    cout << "Lexicographical Ordering..." << endl;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            if(strcmp(str[i],str[j])<0)
-            {
-                swap(str[i],str[j]);
-            }
-        }
-    }
-    for (int i = 0; i < n; i++)
-    {
-        cout << str[i] << endl;
-    }
-    return 0;
+	str[0] = toupper(str[0]);
+	int pos = 0;
+	while (pos != -1)
+	{
+		pos = str.find(' ', pos);
+		str.replace(pos + 1, 1, 1, toupper(str[pos + 1]));  //string& replace (size_t pos,  size_t len,  size_t n, char c);
+		if (pos != -1)pos += 1;
+	}
+	cout << str;
+	return 0;
 }
