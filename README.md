@@ -9,6 +9,7 @@ C++
 - [條件運算子-「?:」](#條件運算子)
 - [運算式中的型別轉換](#運算式中的型別轉換)
 - [switch...case...判斷式](#switch...case...判斷式)
+- [break、continue、return、goto敘述](#break、continue、return、goto敘述)
 
 ## 浮點數比較
 
@@ -247,3 +248,8 @@ int main()
 	}
 }
 ```
+
+## break、continue、return敘述
+- break ：程式(for、while)執行至break，將跳離該迴圈(for、while)。
+- continue ：迴圈執行中遇到continue敘述時，可強制程式跳過迴圈中continue後的敘述，回到迴圈的計次運算式，再開始下一次迴圈執行的流程。
+- return ： 程式執行return敘述，強迫中斷程式的執行，後面所有程式都不會再執行，並傳回值。
