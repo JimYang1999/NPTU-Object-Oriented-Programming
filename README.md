@@ -10,16 +10,16 @@ C++預設使用之浮點數值的型別為double，欲將某浮點數值指定�
 using namespace std;
 int main()
 {
-	float f = 1e36f;
-	if (f == 1e36f)
+	float f = 1e33f;
+	if (f == 1e33f)
 	{
-		f += 5e35f;
+		f += 5e33f;
 	}
 	return 0;
 }
 ```
 應用以下邏輯<br><br>
-**|(f-1e36)| <= 微小數**
+**|(f-1e33)| <= 微小數**
 
 
 完整程式碼如下
@@ -29,10 +29,10 @@ int main()
 using namespace std;
 int main()
 {
-	float f = 1e36f;
-	if (abs(f-1e36)< 1e30)
+	float f = 1e33f;
+	if (abs(f-1e33)< 1e30)
 	{
-		f += 5e35f;
+		f += 5e33f;
 	}
 	return 0;
 }
