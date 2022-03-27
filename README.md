@@ -9,7 +9,7 @@ C++
 - [條件運算子-「?:」](#條件運算子)
 - [運算式中的型別轉換](#運算式中的型別轉換)
 - [switch...case...判斷式](#switch...case...判斷式)
-- [break、continue、return、goto敘述](#break、continue、return、goto敘述)
+- [break、continue、return、goto敘述](#break、continue、return敘述)
 
 ## 浮點數比較
 
