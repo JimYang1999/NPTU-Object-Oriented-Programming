@@ -6,6 +6,9 @@ C++
 - [區域變數](#區域變數)
 - [以define自訂常數](#以define自訂常數)
 - [const常數](#const常數)
+- [條件運算子-「?:」](#條件運算子)
+- [運算式中的型別轉換](#運算式中的型別轉換)
+- [switch...case...判斷式](#switch...case...判斷式)
 
 ## 浮點數比較
 
@@ -149,4 +152,98 @@ C++
 利用const修飾詞限制變數在執行過程中，不可更改在宣告時所定義的數值
 ```
 const 資料型別 常數名稱 = 常數值 ;
+```
+
+## 條件運算子 
+```
+(條件式) ? 程式敘述1 : 程式敘述2 ;
+```
+當條件式判斷為True ，將執行程式敘述1，否則執行程式敘述2。
+
+```
+int i = 3;
+cout << "Integer " << ((i>5) ? "i>5" : "i<=5") << endl;
+```
+執行結果
+```
+i<=5
+```
+當然也能配合define
+
+```
+#include<iostream>
+using namespace std;
+#define MAX(a,b) (a>b)? (a) : (b)
+int main()
+{
+	cout << "MAX(5 , 10)=" << (MAX(5, 10));
+	return 0;
+}
+```
+
+## 運算式中的型別轉換
+
+C++分為 **隱式型別轉換(Implicit Type Conversions)** 與 **顯式型別轉換(Explicit Conversions)**
+- 隱式型別轉換：<br>
+```
+#include<iostream>
+using namespace std;
+#define MAX(a,b) (a>b)? (a) : (b)
+int main()
+{
+	cout << "7/2 = " << 7 / 2 << endl;
+	cout << "7.0/2 = " << 7.0 / 2 << endl;
+	return 0;
+}
+```
+執行結果
+```
+7/2 = 3
+7.0/2 = 3.5
+```
+7/2結果等於3，因7與2皆是整數，相除後將得到整數，但將7改成7.0後，則會因為7.0為float，除以整數2後，編譯器自行把2改成2.0，兩個浮點數相除，可得到float 3.5。
+中間轉換過程由C++編譯器自動執行，因此稱為 **隱式(Implicit)**
+- 顯式型別轉換：
+```
+(欲轉換的型別) 運算式;  (float) 7/2;
+or
+欲轉換的型別 (運算式);  float (7)/2;
+```
+
+## switch...case...判斷式
+```
+switch (條件式){
+case 條件值一:
+  程式區段一;
+  break;
+case 條件值二:
+  程式區段二;
+  break;
+......
+default:
+  程式區段;
+}
+```
+```
+#include<iostream>
+using namespace std;
+int main()
+{
+	char student;
+	cout << "Are you a student? (y/n)";
+	cin >> student;
+	switch(student)
+	{
+	case 'y':
+	case 'Y':
+		cout << "You are a student!" << endl;
+		break;
+	case 'n':
+	case 'N':
+		cout << "You are not a student!" << endl;
+		break;
+	default:
+		cout << "?" << endl;
+	}
+}
 ```
