@@ -92,8 +92,55 @@ i = 2
 ::i = 1
 ```
 
-常數
+以define自訂常數
 ---
-常數是程式中不會變動的資料
-- 整數常數:
-- 
+define為程式的前置處理敘述，只需在define前加上「#」，結尾不需加上「;」，在程式編譯時，編譯器會把程式中使用到常數名稱的地方，換為定義的常數數值
+```
+#define 常數名稱 常數數值
+```
+有以下優點
+- 常數一經定義就無法更改，因此常數不會被改變。
+- 常數名稱代替數值較有意義 (例如 PI代表3.14)
+- 若常數的值需要變動，只要更改定義常數的敘述，不需要修改程式內每一個用到該常數的地方，方便維護。
+
+```
+#include<iostream>
+using namespace std;
+#define PI 3.14
+int main()
+{
+	double Radius =5.0, Area;
+	Area = PI * Radius * Radius;
+	cout << "The area of radius" << Radius << "is" << Area << endl;
+	return 0;
+}
+```
+亦可使用define取代程式內的敘述
+```
+#include<iostream>
+using namespace std;
+#define C cout << "C++ " << endl;
+int main()
+{
+	C C C //不需要「;」，因為已包含在C中
+	return 0;
+}
+```
+執行結果為
+```
+C++
+C++
+C++
+```
+取消常數定義#undef <br>
+
+```
+#undef 已定義過的常數名稱
+```
+
+const常數
+--
+利用const修飾詞限制變數在執行過程中，不可更改在宣告時所定義的數值
+```
+const 資料型別 常數名稱 = 常數值 ;
+```
