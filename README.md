@@ -12,6 +12,7 @@ C++
 - [指標](#指標)
 	- [指標變數的設定](#指標變數的設定)
  	- [指標的指標](#指標的指標)
+ 	- [指標與陣列](#指標與陣列)
 
 
 ## 浮點數比較
@@ -330,3 +331,49 @@ int main()
 ptr_to_ptr 指向 &rarr; ptr_to_int 指向 &rarr; temp
 
 ### 指標與陣列
+
+```
+陣列名稱 [indxe]
+相當於
+* (陣列名稱 + indxe)
+```
+
+因陣列名稱是陣列起始**位址**的代名，因此可以將它看成是一個指標去存取陣列。<br>
+
+array[3] 等於 *(array +3)  //值<br>
+&array[3] 等於 (array+3)  //址<br>
+
+
+```
+#include<iostream>
+using namespace std;
+int main()
+{
+	int array[4];
+	cout << "array：" << array << endl;
+	for (int i = 0; i < 4; i++)
+	{
+		array[i] = i;
+		cout << "array[" << i << "]   |   " << &array[i] << "   |   " << array[i] << endl;
+		cout << "array + " << i << "  |   " << (array + i) << "   |   " << *(array + i) << endl<<endl;
+	}
+	
+	return 0;
+}
+```
+輸出結果為
+```
+array：000000A0A9AFF8B8
+array[0]   |   000000A0A9AFF8B8   |   0
+array + 0  |   000000A0A9AFF8B8   |   0
+
+array[1]   |   000000A0A9AFF8BC   |   1
+array + 1  |   000000A0A9AFF8BC   |   1
+
+array[2]   |   000000A0A9AFF8C0   |   2
+array + 2  |   000000A0A9AFF8C0   |   2
+
+array[3]   |   000000A0A9AFF8C4   |   3
+array + 3  |   000000A0A9AFF8C4   |   3
+```
+不難看出array的位址與&array[0]及array+0是一樣的，並且array每+1就會跳一個陣列資料型別(此為int，4Byte)的位址
