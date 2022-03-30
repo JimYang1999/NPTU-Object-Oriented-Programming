@@ -10,6 +10,8 @@ C++
 - [運算式中的型別轉換](#運算式中的型別轉換)
 - [switch...case...判斷式](#switch判斷式)
 - [指標](#指標)
+	- [指標變數的設定](#指標變數的設定)
+ 	- [指標的指標](#指標的指標)
 
 
 ## 浮點數比較
@@ -268,7 +270,7 @@ int *ptr ;
 *指標變數名稱;
 ```
 
-# 指標變數的設定
+### 指標變數的設定
 
 ```
 指標變數名稱 = & 已宣告變數名稱;
@@ -308,3 +310,23 @@ The value of ptr's value address： 5
 若要看到ptr這個**指標變數**所存放的**內容**(內容為temp的值，也就是5)，則需運用到取值運算子*<br>
 因此temp與*ptr的輸出是相同的。
 
+### 指標的指標
+
+指標的指標意即**指標指向另一個指標**
+
+```
+#include<iostream>
+using namespace std;
+int main()
+{
+	int temp=5;
+	int* ptr_to_int = &temp;
+	int** ptr_to_ptr = &ptr_to_int;
+	return 0;
+}
+```
+以上範例，首先將ptr_to_int這個指標變數指向temp，因此ptr_to_int目前存放的是temp的位址，再將ptr_to_ptr這個指標變數指向ptr_to_int，目前ptr_to_ptr存放的是ptr_to_int的位址。
+
+ptr_to_ptr 指向 &rarr; ptr_to_int 指向 &rarr; temp
+
+### 指標與陣列
