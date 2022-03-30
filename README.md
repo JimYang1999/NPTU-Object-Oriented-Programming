@@ -376,9 +376,9 @@ array + 2  |   000000A0A9AFF8C0   |   2
 array[3]   |   000000A0A9AFF8C4   |   3
 array + 3  |   000000A0A9AFF8C4   |   3
 ```
-不難看出array的位址與&array[0]及array+0是一樣的，並且array每+1就會跳一個陣列資料型別(此為int，4Byte)的位址
+不難看出array的位址與&array[0]及array+0是一樣的，並且array每+1就會跳一個**陣列資料型別**(此為int，4Byte)的位址
 
-二維陣列：存取陣列元素值   
+二維陣列： 
 ```
 array[i][j] 等於 *(*(array+i)+j)
 ```
