@@ -9,6 +9,7 @@ C++
 - [條件運算子-「?:」](#條件運算子)
 - [運算式中的型別轉換](#運算式中的型別轉換)
 - [switch...case...判斷式](#switch判斷式)
+- [指標](#指標)
 
 
 ## 浮點數比較
@@ -248,3 +249,61 @@ int main()
 	}
 }
 ```
+
+## 指標
+
+**位址值可以被儲存在變數裡，這種儲存位址值的變數，稱為指標變數**<br>
+
+```
+資料型別 *指標變數名稱;
+int *ptr ;
+```
+
+- &amp;取址運算子：取得**變數**儲存位置之**位址**
+```
+&變數名稱;
+```
+- *取值運算子：取得**指標變數**儲存之位址值指向的**變數**，執行該變數內資料的存取
+```
+*指標變數名稱;
+```
+
+# 指標變數的設定
+
+```
+指標變數名稱 = & 已宣告變數名稱;
+or
+資料型別 *指標名稱 = &變數;
+```
+```
+int *ptr = &value;
+```
+
+在以下範例，先將temp的**位址**給專門存放**指標變數**的ptr，因此目前ptr存放的資料為temp的位址。
+```
+#include<iostream>
+using namespace std;
+int main()
+{
+	int temp=5;
+	int* ptr = &temp;
+	
+	cout << "The address of temp： " << &temp << endl;
+	cout << "The value of temp： " << temp << endl;
+	cout << "The address of ptr： " << &ptr << endl;
+	cout << "The value of ptr： " << ptr << endl;
+	cout << "The value of ptr's value address： " << *ptr << endl;
+	return 0;
+}
+```
+輸出為
+```
+The address of temp： 000000F550F4F894
+The value of temp： 5
+The address of ptr： 000000F550F4F8B8
+The value of ptr： 000000F550F4F894
+The value of ptr's value address： 5
+```
+可以看到 &temp與ptr的輸出皆為同一個位址<br>
+若要看到ptr這個**指標變數**所存放的**內容**(內容為temp的值，也就是5)，則需運用到取值運算子*<br>
+因此temp與*ptr的輸出是相同的。
