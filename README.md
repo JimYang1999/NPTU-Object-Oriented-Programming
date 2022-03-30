@@ -279,7 +279,7 @@ or
 int *ptr = &value;
 ```
 
-在以下範例，先將temp的**位址**給專門存放**指標變數**的ptr，因此目前ptr存放的資料為temp的位址。
+在以下範例，先將temp的**位址**給專門存放**指標變數**的ptr，因此目前ptr所指向的是temp的位址。
 ```
 #include<iostream>
 using namespace std;
@@ -307,3 +307,4 @@ The value of ptr's value address： 5
 可以看到 &temp與ptr的輸出皆為同一個位址<br>
 若要看到ptr這個**指標變數**所存放的**內容**(內容為temp的值，也就是5)，則需運用到取值運算子*<br>
 因此temp與*ptr的輸出是相同的。
+
