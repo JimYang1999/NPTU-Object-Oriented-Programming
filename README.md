@@ -382,3 +382,32 @@ array + 3  |   000000A0A9AFF8C4   |   3
 ```
 array[i][j] 等於 *(*(array+i)+j) 等於 *( array[i] + j)
 ```
+
+### 指向陣列的指標
+
+
+```
+int array[4] = {0,1,2,3} , *ptr ;
+ptr = array ;
+for(int i=0 ; i<4 ; i++ )
+    {
+        cout << "array[" << i << "]  |  " << ptr << "  |  " << *ptr << endl ;
+        ptr++;
+    }
+```
+輸出結果
+
+```
+array[0]  |  0x7fffbbbb3c80  |  0
+array[1]  |  0x7fffbbbb3c84  |  1
+array[2]  |  0x7fffbbbb3c88  |  2
+array[3]  |  0x7fffbbbb3c8c  |  3
+```
+
+運用指標存取二維陣列
+
+```
+指標變數名稱[列索引 * 行大小 + 行索引]
+或
+*(指標變數名稱 + 列索引 * 行大小 + 行索引)
+```
