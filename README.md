@@ -380,5 +380,5 @@ array + 3  |   000000A0A9AFF8C4   |   3
 
 二維陣列： 
 ```
-array[i][j] 等於 *(*(array+i)+j)
+array[i][j] 等於 *(*(array+i)+j) 等於 *( array[i] + j)
 ```
