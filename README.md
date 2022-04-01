@@ -340,8 +340,8 @@ ptr_to_ptr 指向 ptr_to_int ， ptr_to_int  指向  temp
 
 因陣列名稱是陣列起始**位址**的代名，因此可以將它看成是一個指標去存取陣列。<br>
 
-array[3] 等於 *(array +3)  //值<br>
-&array[3] 等於 (array+3)  //址<br>
+array[3] 等於 *(array +3)  //value<br>
+&array[3] 等於 (array+3)  //address<br>
 
 
 ```
