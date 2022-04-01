@@ -328,7 +328,7 @@ int main()
 ```
 以上範例，首先將ptr_to_int這個指標變數指向temp，因此ptr_to_int目前存放的是temp的**位址**，再將ptr_to_ptr這個指標變數指向ptr_to_int，目前ptr_to_ptr存放的是ptr_to_int的**位址**。
 
-ptr_to_ptr 指向 &rarr; ptr_to_int 指向 &rarr; temp
+ptr_to_ptr 指向 ptr_to_int ， ptr_to_int  指向  temp
 
 ### 指標與陣列
 
