@@ -13,6 +13,8 @@ C++
 	- [指標變數的設定](#指標變數的設定)
  	- [指標的指標](#指標的指標)
  	- [指標與陣列](#指標與陣列)
+ 	- [指向陣列的指標](#指向陣列的指標)
+ 	- [字串陣列](#字串陣列)
 
 
 ## 浮點數比較
@@ -411,3 +413,70 @@ array[3]  |  0x7fffbbbb3c8c  |  3
 或
 *(指標變數名稱 + 列索引 * 行大小 + 行索引)
 ```
+
+### 字串陣列
+
+較節省空間，有多少用多少。
+
+用二維字串陣列宣告會有浪費空間和字串長度限制問題，但字串指標陣列沒有。
+```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    char str_array[7][5] = {"Mon","Tue","Wed","Thu","Frid","Sat","Sun"};
+    char *str_ptr_array[7] = {"Mon","Tuesday","Wed","Thursday","Friday","Sat","Sun"};
+    
+    cout << "2d char array：" << endl << "----------------" << endl ;
+    for (int i = 0 ; i < 7 ; i++)
+    {
+        cout << "{";
+        for ( int j=0 ; j<5 ;j++)
+        {
+            cout << str_array[i][j] << ".";
+        }
+        cout << "}"<< endl;
+    }
+    
+    cout << endl << "char pointer array ：" << endl << "----------------" << endl;
+    
+    for(int i=0 ; i<7; i++)
+    {
+        cout << "{";
+        int j=0;
+        while(str_ptr_array[i][j]!=NULL)
+        {
+            cout <<str_ptr_array[i][j++] <<".";
+        }
+        cout << "}" <<endl;
+    }
+    return 0;
+}
+```
+輸出結果
+
+```
+2d char array：
+----------------
+{M.o.n...}
+{T.u.e...}
+{W.e.d...}
+{T.h.u...}
+{F.r.i.d..}
+{S.a.t...}
+{S.u.n...}
+
+char pointer array ：
+----------------
+{M.o.n.}
+{T.u.e.s.d.a.y.}
+{W.e.d.}
+{T.h.u.r.s.d.a.y.}
+{F.r.i.d.a.y.}
+{S.a.t.}
+{S.u.n.}
+
+```
+能明顯看到二維陣列用到較多的空間，因此用指標宣告字串所使用的空間較節省。<br>
