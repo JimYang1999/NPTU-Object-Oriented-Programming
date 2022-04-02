@@ -15,6 +15,7 @@ C++
  	- [指標與陣列](#指標與陣列)
  	- [指向陣列的指標](#指向陣列的指標)
  	- [字串陣列](#字串陣列)
+ 	- [以動態配置記憶體起始設定指標](#以動態配置記憶體起始設定指標)
 
 
 ## 浮點數比較
@@ -448,7 +449,7 @@ int main()
         int j=0;
         while(str_ptr_array[i][j]!=NULL)
         {
-            cout <<str_ptr_array[i][j++] <<".";
+            cout <<str_ptr_array[i][j++] <<"."; 
         }
         cout << "}" <<endl;
     }
@@ -479,4 +480,80 @@ char pointer array ：
 {S.u.n.}
 
 ```
-能明顯看到二維陣列用到較多的空間，因此用指標宣告字串所使用的空間較節省。<br>
+能明顯看到二維陣列用到較多的空間，因此用指標宣告字串所使用的空間較節省。
+
+### 以動態配置記憶體起始設定指標
+
+使用new運算子，動態配置儲存某資料型別之記憶體空間，且完成初值的設定，再將起始位置值指派給相同資料型別的指標。
+
+```
+資料型別 *指標變數名稱 = new 資料型別 (初值);
+or--------------
+資料型別 *指標變數名稱 = new 資料型別;
+*指標變數名稱 = 初值;
+```
+```
+int *ptr = new int (20);
+or--------------
+double *dptr = new double ;
+*dptr = 3.14;
+```
+以new配置記憶體後，使用完要用delete運算子釋放這塊記憶體
+
+```
+delete 指標變數;
+
+delete ptr;
+delete dptr;
+```
+
+```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int *ptr = new int (20);
+    cout <<"name\t| address\t| value"<< endl;
+    cout <<"----------------------------------"<<endl;
+    cout << "ptr\t| " <<ptr << "\t| " << *ptr <<endl ;
+    
+    delete ptr;
+    return 0;
+}
+
+```
+執行結果
+```
+name	| address	| value
+----------------------------------
+ptr	| 0x56496a2a5eb0| 20
+```
+
+### 以const修飾詞限制指標變數
+
+- 將const修飾詞加在資料型別宣告之前，或資料型別與「*」中間，兩者是一樣的。將限制程式不可修改指標所指向之位址值內儲存的資料。
+```
+const 資料型別 * 指標變數名稱;
+資料型別 const * 指標變數名稱;
+```
+雖然const**不能更改**指標所指向**記憶體空間內的資料**，但可以更改指標所指向的位址。
+
+```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int i =3;
+    const int *pi;
+    pi = &i; //更動指標所指之變數，可以
+    //*pi =5; //更便指標所指之資料，不行
+    cout << "*pi= " << *pi;
+    return 0;
+}
+
+```
+- 將const修飾詞加在「*」之後
