@@ -590,3 +590,78 @@ const int * const pi = &i;
 ```
 
 ## 函數
+- 引數(argument)：實際呼叫函數時，欲傳入函數之資料。
+- 參數(parameter)：函數建立宣告括號內之變數，用於接收呼叫函數之引數值。
+
+```
+int sum(int 參數,int 參數);
+int main()
+{
+    sum(引數,引數);
+    return 0;
+}
+
+```
+
+- call by value：在函數執行過程中，即使**更改傳入資料的值**，主程式內的**引數內容仍不會更改**。
+```
+#include<iostream>
+using namespace std;
+void swap(int, int);
+int main()
+{
+	int a = 10, b = 5;
+	cout << "原值 a= " << a << "  b= " << b << endl;
+	swap(a, b);
+	cout << "但主程式沒有更動 a= " << a << "  b= " << b << endl;
+	return 0;
+}
+void swap(int a, int b)
+{
+	int temp = 0;
+	temp = a;
+	a = b;
+	b = temp;
+	cout << "函式內更改 a= " << a << "  b= " << b << endl;
+}
+```
+輸出結果：
+
+```
+原值 a= 10  b= 5
+函式內更改 a= 5  b= 10
+但主程式沒有更動 a= 10  b= 5
+```
+- call by address：傳址呼叫在呼叫函數時，會把引數的**位址**傳入函數，因此參數為指標型別，這時參數與引數的記憶體位址會是相同的，當函數內更改該記憶體位址的值，主程式該記憶體位址的值也會被更改。<br><br>
+利用&取址運算子將主程式a,b的位址傳去swap函式，再利用*取值運算子將該記憶體位址的值取出來後做交換，因此在swap函式內做更動的值也會影響到主程式。
+<br>
+
+```
+#include<iostream>
+using namespace std;
+void swap(int*, int*);
+int main()
+{
+	int a = 10, b = 5;
+	cout << "原值 a= " << a << "  b= " << b << endl;
+	swap(&a, &b);
+	cout << "主程式也更動 a= " << a << "  b= " << b << endl;
+	return 0;
+}
+void swap(int *a, int *b)
+{
+	int temp = 0;
+	temp = *a;
+	*a = *b;
+	*b = temp;
+	cout << "函式內更改 a= " << *a << "  b= " << *b << endl;
+}
+```
+輸出結果：
+
+```
+原值 a= 10  b= 5
+函式內更改 a= 5  b= 10
+主程式也更動 a= 5  b= 10
+```
+- call by reference：
