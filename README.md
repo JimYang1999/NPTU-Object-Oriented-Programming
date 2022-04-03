@@ -1,5 +1,4 @@
-C++ 
-=======
+#  C++
 - [浮點數比較](#浮點數比較)
 - [字元char](#字元char)
 - [字串](#字串)
@@ -589,7 +588,7 @@ int i =10;
 const int * const pi = &i;
 ```
 
-## 函數
+## 函數         
 - 引數(argument)：實際呼叫函數時，欲傳入函數之資料。
 - 參數(parameter)：函數建立宣告括號內之變數，用於接收呼叫函數之引數值。
 
@@ -720,4 +719,121 @@ int main()
 
 - 將陣列傳入函數
 
+需傳入陣列的起始位址及陣列大小。
+```
+#include<iostream>
+using namespace std;
+int array_sum(int*, int);
+int main()
+{
+	int array[3] = { 1,3,5 };
+	cout << "sum = " << array_sum(array, sizeof(array)/sizeof(array[0])) << endl;
+	return 0;
+}
+int array_sum(int *array,int size) //引數傳送array即是傳送array[0]的位址來array_sum，因此需要用*取值運算子接收。
+{
+	int sum = 0;
+	for (int i = 0; i < size; i++)
+	{
+		sum += array[i];
+	}
+	return sum;
+}
+```
 
+- example ： Bubble sort
+```
+#include<iostream>
+using namespace std;
+void bubble_sort(int*, int);
+void print(int*, int);
+int main()
+{
+	int array[6] = { 1,3,5,7,9,1 };
+	cout << "Original array =" ;
+	print(array, sizeof(array) / sizeof(array[0]));
+	cout << endl << endl;
+	bubble_sort(array, sizeof(array) / sizeof(array[0]));
+	cout << endl << endl << "sorted array = ";
+	print(array, sizeof(array) / sizeof(array[0]));
+	return 0;
+}
+void print(int *array,int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (i != size - 1)
+		{
+			cout << array[i] << ",";
+		}
+		else
+		{
+			cout << array[i];
+		}
+	}
+}
+void bubble_sort(int *array,int size)
+{
+	int temp = 0;
+	for (int i = 0; i < size; i++)
+	{	
+		cout << "sort[" << i << "] =";
+		print(array, size);
+		cout << endl;
+		for (int j = 0; j < size-i; j++)
+		{
+			if (array[j] < array[j + 1])
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+	}
+}
+```
+輸出結果
+```
+Original array =1,3,5,7,9,1
+
+sort[0] =1,3,5,7,9,1
+sort[1] =3,5,7,9,1,1
+sort[2] =5,7,9,3,1,1
+sort[3] =7,9,5,3,1,1
+sort[4] =9,7,5,3,1,1
+sort[5] =9,7,5,3,1,1
+
+
+sorted array = 9,7,5,3,1,1
+```
+
+- 將字串傳入函數
+
+```
+#include<iostream>
+using namespace std;
+void str_upper(char*);
+int main()
+{
+	char str[] = "hello";
+	cout << "Before replacing：" << str << endl;
+	str_upper(str);
+	cout << "After replacing：" << str;
+}
+void str_upper(char* str)
+{
+	while (*str != NULL)
+	{
+		if ((*str) >= 'a' && (*str <= 'z'))
+		{
+			*str -= 32;
+		}
+		str ++;		
+	}
+}
+```
+執行結果：
+```
+Before replacing：hello
+After replacing：HELLO
+```
