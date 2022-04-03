@@ -603,7 +603,7 @@ int main()
 
 ```
 
-- call by value：在函數執行過程中，即使**更改傳入資料的值**，主程式內的**引數內容仍不會更改**。
+- 傳值呼叫(call by value)：在函數執行過程中，即使**更改傳入資料的值**，主程式內的**引數內容仍不會更改**。
 ```
 #include<iostream>
 using namespace std;
@@ -632,7 +632,7 @@ void swap(int a, int b)
 函式內更改 a= 5  b= 10
 但主程式沒有更動 a= 10  b= 5
 ```
-- call by address：傳址呼叫在呼叫函數時，會把引數的**位址**傳入函數，因此參數為指標型別，這時參數與引數的記憶體位址會是相同的，當函數內更改該記憶體位址的值，主程式該記憶體位址的值也會被更改。<br><br>
+- 傳址呼叫(call by address)：傳址呼叫在呼叫函數時，會把引數的**位址**傳入函數，因此參數為指標型別，這時參數與引數的記憶體位址會是相同的，當函數內更改該記憶體位址的值，主程式該記憶體位址的值也會被更改。<br><br>
 利用&取址運算子將主程式a,b的位址傳去swap函式，再利用*取值運算子將該記憶體位址的值取出來後做交換，因此在swap函式內做更動的值也會影響到主程式。
 <br>
 
@@ -664,4 +664,60 @@ void swap(int *a, int *b)
 函式內更改 a= 5  b= 10
 主程式也更動 a= 5  b= 10
 ```
-- call by reference：
+- 傳參考呼叫(call by reference)：為call by value 與 call by address的混合，呼叫函數時，與**call by value**的呼叫方式相同，若函數更改參數的值，則和**call by address**一樣，將更改主程式引數的值。
+<br><br>
+函數呼叫的地方，採用call by reference，必須用「&」取址運算子。
+<br><br>
+以下程式，將k,m傳入change，change方面使用 &r 傳參考及正常的s接收，因此k的值會被更改，m不會。
+```
+#include<iostream>
+using namespace std;
+void change(double& r, double s)
+{
+	r = 100;
+	s = 200;
+}
+
+int main()
+{
+	double k, m;
+
+	k = 3;
+	m = 4;
+
+	change(k, m);
+
+	cout << k << ", " << m << endl;        // Displays 100, 4.
+
+	return 0;
+}
+```
+指標方式
+
+```
+#include<iostream>
+using namespace std;
+void change(double* r, double s)
+{
+	*r = 100;
+	s = 200;
+}
+
+int main()
+{
+	double k, m;
+
+	k = 3;
+	m = 4;
+
+	change(&k, m);
+
+	cout << k << ", "<< m << endl;        // Displays 100, 4.
+
+	return 0;
+}
+```
+
+- 將陣列傳入函數
+
+
