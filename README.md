@@ -850,9 +850,7 @@ typedef char My_char[5]; //定義自訂資料型別My_char為字串變數
 ```
 像上述例子，在程式內可運送My_char宣告字串變數，當5個字元不夠用時，直接更改typedef這一行的陣列大小即可，不用更改全部程式。
 
- - struct：運用struch結構自訂資料型別可以將資料型別不同但彼此有關係的資料放一起
-
-其所包含的每一個變數，稱為結構的 **成員(Member)**，成員宣告無限制，存取分為直接(value)存取「.」以及間接(address)存取「->」
+ - struct：運用struct結構自訂資料型別可以將資料型別不同但彼此有關係的資料放一起
 
 ```
 struct 結構型別名稱 {
@@ -860,7 +858,28 @@ struct 結構型別名稱 {
 	資料型別 成員名稱2, 成員名稱3;
 	...
 };
+```
 
+
+其所包含的每一個變數，稱為結構的 **成員(Member)**，成員宣告無限制，存取分為直接(value)存取「.」以及間接(address)存取「->」
+
+```
+#include<iostream>
+using namespace std;
+struct point
+{
+	int x, y;
+};
+int main()
+{
+	point* p1 = new point; 
+	p1->x = 10; //間接存取
+	(*p1).y = 20; //直接存取
+}
+```
+
+定義結構的同時，也可宣告結構變數並給予初值，若設定值個數少於成員數，**未被設定的成員值將歸零**
+```
 struct STUDENT {
 	char name[20];
 	char no[5];
@@ -869,6 +888,15 @@ struct STUDENT {
 } John, Mary = { 'Mary',123,165.5,55.5,100,100 }, Jim = { 'Jim' };
 
 ```
-定義結構的同時，也可宣告結構變數並給予初值，若設定值個數少於成員數，**未被設定的成員值將歸零**
 
- - enum
+ - enum：列舉型別enum是一種**特別的常數定義方式**，在列舉型別有效的範圍中，將成為程式裡代表一個整數值的符號常數
+
+```
+enum FRUIT {
+	apple, //預設值為0
+	orange=28, 
+	banana //預設值為28+1=29
+}fruit1;
+
+enum FRUIT fruit2=apple;
+```
