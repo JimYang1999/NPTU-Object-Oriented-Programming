@@ -17,6 +17,7 @@
  	- [以動態配置記憶體起始設定指標](#以動態配置記憶體起始設定指標)
  	- [以const修飾詞限制指標變數](#以const修飾詞限制指標變數)
 - [函數](#函數)
+- [自訂資料型別](#自訂資料型別)
 
 ## 浮點數比較
 
@@ -837,3 +838,37 @@ void str_upper(char* str)
 Before replacing：hello
 After replacing：HELLO
 ```
+
+## 自訂資料型別
+
+ - typedef：可用typedef為特定資料型別定義新名稱
+
+```
+typedef 資料型別 自訂名稱;
+
+typedef char My_char[5]; //定義自訂資料型別My_char為字串變數
+```
+像上述例子，在程式內可運送My_char宣告字串變數，當5個字元不夠用時，直接更改typedef這一行的陣列大小即可，不用更改全部程式。
+
+ - struct：運用struch結構自訂資料型別可以將資料型別不同但彼此有關係的資料放一起
+
+其所包含的每一個變數，稱為結構的 **成員(Member)**，成員宣告無限制，存取分為直接(value)存取「.」以及間接(address)存取「->」
+
+```
+struct 結構型別名稱 {
+	資料型別 成員名稱1;
+	資料型別 成員名稱2, 成員名稱3;
+	...
+};
+
+struct STUDENT {
+	char name[20];
+	char no[5];
+	float height, weight;
+	int math, english;
+} John, Mary = { 'Mary',123,165.5,55.5,100,100 }, Jim = { 'Jim' };
+
+```
+定義結構的同時，也可宣告結構變數並給予初值，若設定值個數少於成員數，**未被設定的成員值將歸零**
+
+ - enum
