@@ -15,21 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="name.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="initial.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="name.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="initial.cpp">
+    <ClCompile Include="member.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>
