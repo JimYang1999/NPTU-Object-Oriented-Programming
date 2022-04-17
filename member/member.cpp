@@ -4,7 +4,7 @@ using namespace std;
 #include<cstring>
 
 
-enum MemberType {Gold,Silver};
+enum MemberType { Gold, Silver };
 
 union Benefit
 {
