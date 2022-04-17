@@ -42,7 +42,7 @@ clean:
         rm -f Score.out Student.o
 ```
 
-Student.h：
+**Student.h：**
 ```
 #ifndef _STUDENT_
 #define _STUDENT_
