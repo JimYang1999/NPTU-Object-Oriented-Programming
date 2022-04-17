@@ -23,7 +23,7 @@
     <ClCompile Include="Student.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="Scorecpp.cpp">
+    <ClCompile Include="Score.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>
