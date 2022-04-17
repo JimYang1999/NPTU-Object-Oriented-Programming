@@ -50,16 +50,16 @@ Student.h：
 class Student
 {
 public:
-    char name[21];
-    char name_first[21];
-    char number[11];
+    char name[21];//名
+    char name_first[21];//姓
+    char number[11];//學號
     float homework; //作業平均
     float sscore;//學期成績
     float score[5]; //作業成績
-    float midscore;
-    float finalscore;
-    void calculateScore();
-    Student();
+    float midscore;//期中成績
+    float finalscore;//期末成績
+    void calculateScore();//member function
+    Student();//建構子
 };
 #endif
 ```
@@ -73,14 +73,14 @@ Score.cpp：
 using namespace std;
 int main()
 {
-    Student* student = new Student[10];
-    Student temp;
+    Student* student = new Student[10]; //動態建立一個的Studnet類別陣列
+    Student temp; //佔存
     float maxscore = 0.0f;
     for (int k = 0; k < 10; k++)
     {
-        student[k].calculateScore();
+        student[k].calculateScore(); //計算每一位成績
     }
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++) //bubble sort
     {
         for (int j = i; j < 10; j++)
         {
@@ -90,11 +90,11 @@ int main()
                 student[i] = student[j];
                 student[j] = temp;
             }
-            if (student[i].sscore == student[j].sscore)
+            if (student[i].sscore == student[j].sscore)//如果成績相同就比較學號
             {
                 for (int k = 0; k < 10; k++)
                 {
-                    if (student[i].number[k] < student[j].number[k])
+                    if (student[i].number[k] < student[j].number[k]) //比較學號
                     {
                         temp = student[i];
                         student[i] = student[j];
@@ -105,7 +105,7 @@ int main()
             }
         }
     }
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++)//輸出
     {
         cout << student[i].name << " " << student[i].name_first << " (" << student[i].number << ") " << student[i].sscore << endl;
     }
@@ -123,24 +123,24 @@ void Student::calculateScore()
 {
     int times1 = 0;//缺交次數
     int times2 = 0;//抄襲次數
-    float homework = 0.0f;
+    float homework = 0.0f;//平均作業成績
     for (int i = 0; i < sizeof(score) / sizeof(score[0]); i++)
     {
-        if (int(score[i] + 1) == 0)//缺交
+        if (int(score[i] + 1) == 0)//score=-1 ,缺交
         {
             score[i] = 0.0f;
             times1 += 1;
         }
-        if (int(score[i] + 2) == 0)//抄襲
+        if (int(score[i] + 2) == 0)//score=-2 ,抄襲
         {
             score[i] = 0.0f;
             times2 += 1;
         }
-        homework += score[i];
+        homework += score[i]; //總成績
     }
-    homework = homework / 5.0f; //作業平均成績
-    homework -= float(times1) * 5.0f;
-    if (homework < 0.0) //作業成績平均<0
+    homework = homework / 5.0f; //平均作業成績
+    homework -= float(times1) * 5.0f; //平均-缺交次數*5分
+    if (homework < 0.0) //平均作業成績<0
     {
         homework = 0.0f;
     }
@@ -152,14 +152,14 @@ void Student::calculateScore()
     {
         finalscore = 0.0f;
     }
-    sscore = homework * 0.4f + midscore * 0.3f + finalscore * 0.3f;
-    sscore -= times2 * 5.0f;
+    sscore = homework * 0.4f + midscore * 0.3f + finalscore * 0.3f; //學期成績
+    sscore -= times2 * 5.0f; //學期成績-抄襲次數*4分
     if (sscore < 0.0)
     {
         sscore = 0;
     }
 }
-Student::Student() {
+Student::Student() {  //每建立一個student都會呼叫一次建構子，以下為初始化所做的事情
     cin >> name >> name_first >> number;
     for (int i = 0; i < 5; i++)
     {
