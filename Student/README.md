@@ -14,7 +14,7 @@
 5. 你可以視需要設計其它的data members或member functions
 6. 你必須提供Makefile，將可執行檔命名為「Score」，並將所有需要的檔案都上傳
 
-輸出:
+**輸出:**
 ```
 [00:42 cbf107020@ws hw4]$ ./Score.out <cpp2022.dat
 Yu-Liang Chang (1044180028) 94.24
@@ -30,7 +30,7 @@ Amy Chang (1044180011) 19
 [00:42 cbf107020@ws hw4]$
 ```
 
-Makefile：
+**Makefile：**
 ```
 all:
         make Score.out
@@ -64,7 +64,7 @@ public:
 #endif
 ```
 
-Score.cpp：
+**Score.cpp：**
 ```
 #include<iostream>
 #include<string>
@@ -113,7 +113,7 @@ int main()
 }
 ```
 
-Student.cpp：
+**Student.cpp：**
 ```
 #include<iostream>
 using namespace std;
