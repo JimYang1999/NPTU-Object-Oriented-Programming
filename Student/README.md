@@ -16,7 +16,7 @@
 
 **輸出:**
 ```
-[00:42 cbf107020@ws hw4]$ ./Score.out <cpp2022.dat
+[00:42 cbf107020@ws hw4]$ ./Score.out < cpp2022.dat
 Yu-Liang Chang (1044180028) 94.24
 I-ping Li (1044180029) 94.12
 Jun Wu (1044180000) 93.46
