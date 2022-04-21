@@ -153,7 +153,7 @@ void Student::calculateScore()
         finalscore = 0.0f;
     }
     sscore = homework * 0.4f + midscore * 0.3f + finalscore * 0.3f; //學期成績
-    sscore -= times2 * 5.0f; //學期成績-抄襲次數*4分
+    sscore -= times2 * 5.0f; //學期成績-抄襲次數*5分
     if (sscore < 0.0)
     {
         sscore = 0;
