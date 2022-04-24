@@ -7,7 +7,7 @@ int main()
 {
 	double x;
 	cin >> x;
-	adjustPrice(x);
+	cout<<adjustPrice(x);
 }
 int adjustPrice(int x)
 {
