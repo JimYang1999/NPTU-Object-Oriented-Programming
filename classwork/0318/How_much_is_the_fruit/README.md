@@ -23,6 +23,8 @@
 ```
 
 完整程式碼如下：
+
+```
 #include<iostream>
 #include<string>
 using namespace std;
